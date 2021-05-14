@@ -1,0 +1,68 @@
+//==============
+//count in index.js
+
+/* let count = 0
+
+//connection
+io.on('connection', (socket) => {
+    console.log('new webSocket connection')
+
+
+    //event name and passed count variable
+    socket.emit('countUpdated', count)
+
+    //listen for event increment
+    socket.on('increment' , () => {
+        count++
+
+        //socket.emit('countUpdated', count)
+        
+        //emit to every connection available
+        io.emit('countUpdated', count)
+    })
+}) */
+
+----------
+testing count in chat.js
+
+/* 
+// should have the same event name in index.js
+clientSocket.on('countUpdated', (count) => {
+
+    console.log('The count has been updated')
+    console.log(count)
+
+}) */
+
+/* 
+//get increment button in html and listen to click event
+document.querySelector('#increment').addEventListener('click', () => {
+    console.log('clicked')
+    //clientSocket.emit('increment')
+}) */
+
+//================
+
+previous html
+
+<form>
+                <p>Send your messages below</p>
+                <input id="chatMessage" placeholder="message"> 
+                <button id="sendMessage">Send Message</button>
+ </form>
+
+ ------------
+
+ previous chat.js event listener
+
+document.querySelector('#sendMessage').addEventListener('click' , (e) => {
+    //e.preventDefault() will prevent page refresh
+    e.preventDefault()
+    console.log('clicked on send')
+    // get value of input field chatMessage
+    const chat = document.getElementById("chatMessage").value
+    //console.log(chat)
+    clientSocket.emit('receiveMessage', chat)
+
+})
+
